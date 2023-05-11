@@ -1,4 +1,4 @@
-package com.example.hw28;
+package com.example.homework2_7;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

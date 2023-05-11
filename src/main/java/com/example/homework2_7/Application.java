@@ -1,4 +1,4 @@
-package com.example.hw28;
+package com.example.homework2_7;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
