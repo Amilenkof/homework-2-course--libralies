@@ -2,6 +2,8 @@ package com.example.homework2_7.Model;
 
 import com.example.homework2_7.Exceptions.EmployeeAlreadyInList;
 import com.example.homework2_7.Exceptions.EmployeeNotFound;
+import com.example.homework2_7.Exceptions.WrongParametr;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -17,6 +19,12 @@ public class EmployeeBookImpl implements EmployeeBook {
 
     @Override
     public Employee add(String firstName, String lastName, double salary, int department) {
+        firstName = StringUtils.replace(firstName," ","");
+        lastName = StringUtils.replace(lastName," ","");
+        if (!checkParametr(firstName)||!checkParametr(lastName)) {
+            throw new WrongParametr("Введите строку");}
+
+
         Employee employee = new Employee(firstName, lastName, salary, department);
 
         if (employees.containsKey(employee.KeyEmp())) {
@@ -30,6 +38,10 @@ public class EmployeeBookImpl implements EmployeeBook {
 
     @Override
     public Employee remove(String firstName, String lastName, double salary, int departament) {
+        firstName = StringUtils.replace(firstName," ","");
+        lastName = StringUtils.replace(lastName," ","");
+        if (!checkParametr(firstName)||!checkParametr(lastName)) {
+            throw new WrongParametr("Введите строку");}
         Employee employee = new Employee(firstName, lastName, salary, departament);
         boolean b = employees.containsKey(employee.KeyEmp());
         if (b) {
@@ -41,6 +53,10 @@ public class EmployeeBookImpl implements EmployeeBook {
 
     @Override
     public Employee find(String firstName, String lastName, double salary, int departament) {
+        firstName = StringUtils.replace(firstName," ","");
+        lastName = StringUtils.replace(lastName," ","");
+        if (!checkParametr(firstName)||!checkParametr(lastName)) {
+            throw new WrongParametr("Введите строку");}
         Employee employee = new Employee(firstName, lastName, salary, departament);
         boolean b = employees.containsKey(employee.KeyEmp());
         if (b) {
@@ -59,5 +75,10 @@ public class EmployeeBookImpl implements EmployeeBook {
 
     public void setEmployees(Map<String, Employee> employees) {
         this.employees = employees;
+    }
+
+    public boolean checkParametr(String s) {
+        return  StringUtils.isAlpha(s);
+
     }
 }
