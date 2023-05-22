@@ -1,5 +1,7 @@
 package com.example.homework2_7.Model;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Employee {
     private String firstname;
     private String lastname;
@@ -8,8 +10,8 @@ public class Employee {
 
 
     public Employee(String firstname, String lastname, double salary, int department) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstname = StringUtils.capitalize(firstname.toLowerCase());
+        this.lastname = StringUtils.capitalize(lastname.toLowerCase());
         this.salary = salary;
         this.department = department;
     }
